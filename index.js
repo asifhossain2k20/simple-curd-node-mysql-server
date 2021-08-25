@@ -51,9 +51,12 @@ app.post('/create', (req, res) => {
   app.put("/update", (req, res) => {
     const id = req.body.id;
     const wage = req.body.wage;
+    const name = req.body.name;
+    const country = req.body.country;
+    const position = req.body.position;
     db.query(
-      "UPDATE employees SET wage = ? WHERE id = ?",
-      [wage, id],
+      "UPDATE employees SET wage = ?,name= ?,country=?,position=? WHERE id = ?",
+      [wage,name,country,position, id],
       (err, result) => {
         if (err) {
           console.log(err);
